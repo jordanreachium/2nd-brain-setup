@@ -1,0 +1,10 @@
+[project]
+name = "brain-extractor-template"
+version = "0.0.1"
+description = "Default extractor for a newly-seeded brain. Rename in your brain's copy."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

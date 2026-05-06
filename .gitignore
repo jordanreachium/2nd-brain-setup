@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Per-brain rules live in each brain's own .gitignore (seeded from
+# _brain_template/.gitignore). This top-level file only covers tooling
+# noise that applies to the kit itself.

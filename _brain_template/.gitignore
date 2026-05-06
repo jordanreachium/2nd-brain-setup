@@ -1,0 +1,24 @@
+# Raw source bundles (PDFs, video, audio, originals) — keep local.
+# Flow: _raw/ → extract → _pipeline/ (committed source of truth) →
+# obsidianify → Vault/. Only _pipeline/ and Vault/ get tracked.
+_raw/**/*
+!_raw/README.md
+!_raw/**/README.md
+!_raw/**/.gitkeep
+
+# Graphify caches & ephemeral extraction artifacts
+graphify-out/cache/
+graphify-out/converted/
+graphify-out/.graphify_*
+graphify-out/.chunk_b3_*
+
+# Pipeline Python venv + caches (extraction code only — text outputs commit)
+_pipeline/.venv/
+_pipeline/**/__pycache__/
+_pipeline/**/*.pyc
+_pipeline/**/*.egg-info/
+
+# Obsidian per-machine state
+.obsidian/workspace.json
+.obsidian/cache
+.obsidian/plugins/*/data.json

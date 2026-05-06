@@ -1,0 +1,19 @@
+# Core test framework
+pyyaml
+pytest
+
+# Source-handler libs (pinned — these have had API churn between versions)
+faster-whisper>=1.0,<2
+pypdf>=5.0,<7
+python-docx>=1.0,<2
+ebooklib>=0.18,<1
+readability-lxml>=0.8,<1
+
+# Source-handler libs (less fragile, unpinned)
+fpdf2
+markdownify
+beautifulsoup4
+
+# Fetchers
+requests
+yt-dlp

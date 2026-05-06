@@ -1,0 +1,31 @@
+# Python venv + caches (pipeline scaffolding, not knowledge)
+_pipeline/.venv/
+_pipeline/**/__pycache__/
+_pipeline/**/*.pyc
+_pipeline/**/*.egg-info/
+**/.pytest_cache/
+
+# Pipeline test infrastructure (test data, not knowledge)
+_pipeline/tests/
+_pipeline/fixtures/
+
+# Pipeline Python scripts (extraction code, not knowledge content).
+# Their extracted text outputs live as .md in _pipeline/ and get
+# graphified from there.
+_pipeline/**/*.py
+
+# Intermediate extraction output (jsonl/json per source). The clean
+# text outputs already live as .md in _pipeline/ — graphing the
+# jsonl would double-count the same semantic content.
+_pipeline/**/*.jsonl
+_pipeline/**/*.json
+
+# Raw source bundles (PDFs, video, audio, originals). Extracted into
+# _pipeline/, which is what gets graphified.
+_raw/
+
+# Our own outputs (would recurse)
+graphify-out/
+
+# Obsidian UI state (settings, not content)
+.obsidian/
