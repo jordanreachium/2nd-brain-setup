@@ -70,7 +70,9 @@ The pipeline is the **source of truth**. Vault and graphify-out are derived. If 
 cd scripts/extractify
 pip install -r requirements-dev.txt
 
-# 3. Install graphify (it ships as a package in the repo).
+# 3. Install graphify (it ships as a package in this repo — `pip install -e .`
+#    points pip at the local source, no PyPI download. Required: /graphify and
+#    /update-brain's graph phase will refuse to run without this step.)
 cd ../graphify
 pip install -e .
 
@@ -166,6 +168,8 @@ The slash commands are thin — they parse arguments, validate, and delegate to 
 ---
 
 ## Troubleshooting
+
+**`/graphify` or `/update-brain ... graph` errors with "graphify is not importable".** You skipped step 3 of the install. From the repo root: `cd scripts/graphify && pip install -e .`. The kit ships graphify as vendored source — there is no PyPI download.
 
 **`/update-brain` refuses with "unfilled placeholders".** You scaffolded a brain manually (or `/new-brain` was interrupted) and `_meta/extract.md` or `_meta/obsidian.md` still has `<kind-1>`-style tokens. Fill them in (or re-run `/new-brain` on a fresh folder name).
 

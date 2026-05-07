@@ -9,7 +9,7 @@ from pathlib import Path
 
 try:
     from importlib.metadata import version as _pkg_version
-    __version__ = _pkg_version("graphifyy")
+    __version__ = _pkg_version("graphify")
 except Exception:
     __version__ = "unknown"
 

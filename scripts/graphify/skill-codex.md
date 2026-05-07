@@ -68,7 +68,15 @@ if [ -n "$GRAPHIFY_BIN" ]; then
 else
     PYTHON="python3"
 fi
-"$PYTHON" -c "import graphify" 2>/dev/null || "$PYTHON" -m pip install graphifyy -q 2>/dev/null || "$PYTHON" -m pip install graphifyy -q --break-system-packages 2>&1 | tail -3
+# graphify must be installed locally before running this skill.
+# Run the one-time setup from the repo root:  cd scripts/graphify && pip install -e .
+if ! "$PYTHON" -c "import graphify" 2>/dev/null; then
+    echo "ERROR: graphify is not importable from $PYTHON." >&2
+    echo "Run the one-time setup from the repo root:" >&2
+    echo "    cd scripts/graphify && pip install -e ." >&2
+    echo "See README.md '## Setup' for full install steps." >&2
+    exit 1
+fi
 # Write interpreter path for all subsequent steps
 "$PYTHON" -c "import sys; open('graphify-out/.graphify_python', 'w').write(sys.executable)"
 ```

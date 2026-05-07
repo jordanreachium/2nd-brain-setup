@@ -58,9 +58,13 @@ Follow these steps in order. Do not skip steps.
 ### Step 1 - Ensure graphify is installed
 
 ```powershell
-# Detect Python and install graphify if needed
+# graphify must be installed locally before running this skill.
+# Run the one-time setup from the repo root:  cd scripts\graphify ; pip install -e .
 python -c "import graphify" 2>$null
-if ($LASTEXITCODE -ne 0) { pip install graphifyy -q 2>&1 | Select-Object -Last 3 }
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "graphify is not importable from python. Run the one-time setup from the repo root:`n    cd scripts\graphify ; pip install -e .`nSee README.md '## Setup' for full install steps."
+    exit 1
+}
 # Write interpreter path for all subsequent steps
 python -c "import sys; open('.graphify_python', 'w').write(sys.executable)"
 ```
@@ -1177,7 +1181,7 @@ graphify claude uninstall  # remove the section
 
 If vertical scrolling breaks in PowerShell after running graphify, this is caused by ANSI escape sequences from the `graspologic` library. Graphify v0.3.10+ suppresses this output, but if you still see the issue:
 
-1. **Upgrade graphify**: `pip install --upgrade graphifyy`
+1. **Update graphify**: pull the latest version of this repo and re-run `pip install -e .` from `scripts/graphify/`
 2. **Use Windows Terminal** instead of the legacy PowerShell console — Windows Terminal handles ANSI codes correctly
 3. **Reset your terminal**: close and reopen PowerShell
 4. **Skip graspologic**: uninstall it (`pip uninstall graspologic`) and graphify will fall back to NetworkX's built-in Louvain algorithm, which produces no ANSI output
